@@ -17,9 +17,9 @@ def main():
     document = Document()
     document.add_heading(doc_title, 0)
     document.add_paragraph(doc_main)
-    document.save('text2docx/files/' + doc_name + '  《' + doc_title + '》.docx')
-    content = open('text2docx/files/' + doc_name + '  《' + doc_title + '》.docx', 'rb').read()
-    put_file(doc_name + '  《' + doc_title + '》.docx', content, '文章生成完毕  点击我以下载')
+    document.save(f'text2docx/files/{doc_name}  《{doc_title}》.docx')
+    content = open(f'text2docx/files/{doc_name}  《{doc_title}》.docx', 'rb').read()
+    put_file(f'{doc_name}  《{doc_title}》.docx', content, '文章生成完毕  点击我以下载')
     # put_link(name='点击下载文件',url="http://docxdownload.gtrees.tk/" + doc_name + '  《' + doc_title + '》.docx',new_window=False)
     put_text('文件生成完毕，请按按钮下载↑')
 if __name__ == "__main__":
