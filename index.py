@@ -1,3 +1,5 @@
+#py38
+
 from docx import Document
 from pywebio.input import input, TEXT, textarea
 from pywebio.output import put_text, put_loading, put_file
@@ -18,9 +20,12 @@ def main():
     document.add_heading(doc_title, 0)
     document.add_paragraph(doc_main)
     document.save(f'text2docx/files/{doc_name}  《{doc_title}》.docx')
-    content = open(f'text2docx/files/{doc_name}  《{doc_title}》.docx', 'rb').read()
-    put_file(f'{doc_name}  《{doc_title}》.docx', content, '文章生成完毕  点击我以下载')
+    content = b""
+    with open(f'text2docx/files/{doc_name}  《{doc_title}》.docx', 'rb') as f:
+        content = f.read()
+    put_file(f'{doc_name}  《{doc_title}》.docx', content, r'文章生成完毕  点击我以下载')
     # put_link(name='点击下载文件',url="http://docxdownload.gtrees.tk/" + doc_name + '  《' + doc_title + '》.docx',new_window=False)
     put_text('文件生成完毕，请按按钮下载↑')
+
 if __name__ == "__main__":
     start_sevser(main)
